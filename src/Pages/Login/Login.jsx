@@ -12,6 +12,7 @@ const Login = () => {
     username: "",
     password: ""
   })
+  const [errors, setErrors] = useState(false)
 
   const handleSubmit = (e) =>{
     e.preventDefault()
@@ -21,7 +22,7 @@ const Login = () => {
       const {registered_users} = state
       validateUser(registered_users, user)
     }else{
-      alert(validation.username || validation.password);
+      setErrors(validation.username || validation.password)
     }
   }
 
@@ -41,10 +42,11 @@ const Login = () => {
           })
           navigate('/')
         }else{
-          alert('password incorrect')
+          setErrors('password incorrect')
         }
       }else{
-        alert('User not found')
+        setErrors('User not found')
+
       }
   }
 
@@ -54,6 +56,7 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <input onChange={handleInput} name="username" type="text" placeholder="Username" value={user.username}/>
         <input onChange={handleInput} name="password" type="password" placeholder="Password" value={user.password}/>
+        {errors && <p className="Errors">{errors}</p>}
         <button>Login</button>
       </form>
     </Container>
