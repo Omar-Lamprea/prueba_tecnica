@@ -1,7 +1,13 @@
+import AddPost from "../../Components/Post/AddPost"
+import Post from "../../Components/Post/Post"
+import './Home.scss'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <section className="home d-flex flex-column">
+      <AddPost />
+      <Post />
+    </section>
   )
 }
 

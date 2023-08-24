@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useCallback, useContext, useEffect, useReducer } from "react";
 import { API_URL } from "../utils/API";
 import { userList } from "../utils/users";
 
@@ -11,7 +12,8 @@ const initialState = {
     password: ""
   },
   api: API_URL,
-  registered_users: userList
+  registered_users: userList,
+  post: []
 }
 
 const ContextGlobal = createContext('')
@@ -24,6 +26,8 @@ const reducer = (state, action) => {
     case 'logout':
       localStorage.removeItem('user')
       return {...state, user: false}
+    case 'setPost':
+      return {...state, post: action.payload}
     default:
         throw new Error('action type error')
   }
@@ -34,11 +38,23 @@ const ContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  // const getList = useCallback(async () => {
-  // }, []);
+  const gePost = useCallback(async () => {
+    try {
+      const res = await fetch(state.api + 'posts')
+      if(res.ok){
+        const data = await res.json()
+        dispatch({
+          type: 'setPost', 
+          payload:  data
+        })
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() =>{
-    // getList();
+    gePost();
   },[])
   
   

@@ -1,0 +1,18 @@
+.form_add_post{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  gap: .5rem;
+  input, textarea, button{
+    border: none;
+    padding: .5rem;
+    border-radius: 5px;
+  }
+  button{
+    background-color: rgb(243, 243, 243);
+    font-weight: 600;
+  }
+}

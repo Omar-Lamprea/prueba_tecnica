@@ -1,3 +1,8 @@
 .main-container{
-  
+  min-height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1A2138;
+  padding: 1rem 0;
 }
