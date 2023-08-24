@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import avatar from '../../assets/avatar.avif'
 import { useContextGlobal } from '../../Context/global.context'
-import ModalEdit from '../modal/ModalEdit'
+import ModalEdit from '../Modal/ModalEdit'
 import Comments from './Comments'
 import messageIcon from '../../assets/chat-dots.svg'
 import { deletePostId } from '../../Services/deletePost'
