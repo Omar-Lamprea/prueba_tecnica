@@ -5,11 +5,11 @@ import { API_URL } from "../utils/API";
 import { userList } from "../utils/users";
 
 
-
+const localUser = JSON.parse(localStorage.getItem('user'))
 const initialState = {
   user: {
-    username: "",
-    password: ""
+    username: localUser?.username,
+    password: localUser?.password
   },
   api: API_URL,
   registered_users: userList,
